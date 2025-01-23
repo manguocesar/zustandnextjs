@@ -15,8 +15,8 @@ const App = () => {
   return <OtherComponent count={count} text={text} />;
 };
 
-const OtherComponent = ({ count, text }: { count: number, text:string }) => {
-  
+const OtherComponent = ({ count, text }: { count: number, text: string }) => {
+
   const increment = useCounterStore((state) => state.increment);
   const incrementAsync = useCounterStore((state) => state.incrementAsync);
   const decrement = useCounterStore((state) => state.decrement);
@@ -31,15 +31,16 @@ const OtherComponent = ({ count, text }: { count: number, text:string }) => {
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     setTyppedText(e.target.value);
-    // add(e.target.value);
   }
 
 
 
   return (
     <div className="flex flex-col  items-center justify-center h-screen">
-      <div>
-        {count}
+      <div className="">
+        <p className="text-center text-2xl">
+          {count}
+        </p>
         <div className="flex flex-col border-2 border-white p-4 m-2 hover:opacity-70">
           <button onClick={increment}>Increment </button>
           <button onClick={incrementAsync}>Increment Async w/ setTimeout 1s</button>
@@ -49,8 +50,10 @@ const OtherComponent = ({ count, text }: { count: number, text:string }) => {
       <div>
         {text}
         <div className="flex flex-col border-2 text-black border-white p-4 m-2">
-          <button onClick={add}>Increment </button>
-          <input type="text" value={typpedText} onChange={(e)=> handleClick(e)} />
+          <button className="text-black bg-white rounded-lg my-3" onClick={() => add(typpedText)}>
+            Change text
+          </button>
+          <input className="text-center" type="text" value={typpedText} onChange={(e) => handleClick(e)} />
         </div>
       </div>
     </div>

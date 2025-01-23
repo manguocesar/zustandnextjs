@@ -23,12 +23,12 @@ export const useCounterStore = create<CounterStore>((set) => ({
 
 type TextStore = {
     text: string;
-    add: () => void;
+    add: (string:string) => void;
 };
 
 export const useTextStore = create<TextStore>((set) => ({
   text: 'Base',
-  add: () => {
-    set((state) => ({ text: state.text }));
+  add: (text) => {
+    set((state) => ({ text: text }));
   }
 }));
